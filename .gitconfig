@@ -1,0 +1,20 @@
+[color]
+  ui = auto
+
+[alias]
+  st = status
+  hist = log --graph --all --color --pretty=format:\" %C(yellow)%h%Creset %C(green)%an%Creset%x09%s %Cred%d%Creset\"
+  graph = log --graph --date=short --pretty=\"format:%C(yellow)%h %C(cyan)%ad %C(green)%an%Creset%x09%s %C(red)%d%Creset\"
+
+[core]
+  excludesfile = /Users/tshiraishi/.gitignore_global
+  editor = vim -c \"set fenc=utf-8\"
+
+[diff]
+  tool = vimdiff
+  algorithm = histogram
+    compactionHeuristic = true
+
+[merge]
+  tool = vimdiff
+
