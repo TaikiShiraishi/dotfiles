@@ -305,7 +305,6 @@ map <silent> [Tag]p :tabprevious<CR>
 au BufRead,BufNewFile *.md set filetype=markdown
 let g:previm_open_cmd = 'open'
 
-
 " neocomplcache設定
 "" Disable AutoComplPop.
 " let g:acp_enableAtStartup = 0
@@ -326,30 +325,6 @@ let g:neocomplete#sources#dictionary#dictionaries = {
 "----------------------------
 vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-
-"------------------------------------
-" Unit.vim
-"------------------------------------
-" 入力モードで開始する
-let g:unite_enable_start_insert=1
-" 大文字小文字を区別しない
-let g:unite_enable_ignore_case = 1
-let g:unite_enable_smart_case = 1
-" grep検索
-nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
-" ディレクトリを指定してgrep検索
-nnoremap <silent> ,dg  :<C-u>Unite grep -buffer-name=search-buffer<CR>
-" カーソル位置の単語をgrep検索
-nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W><CR>
-" grep検索結果の再呼出
-nnoremap <silent> ,r :<C-u>UniteResume search-buffer<CR>
-nnoremap <silent> ,m :<C-u>Unite<Space>file_mru<CR>
-" unite grep に ag(The Silver Searcher) を使う
-if executable('ag')
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-  let g:unite_source_grep_recursive_opt = ''
-endif
 
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1 "tabline表示
@@ -372,10 +347,6 @@ inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
-"----------------------------------------
-" Vimfiler
-" ---------------------------------------
-" nnoremap <silent><C-e> :VimFiler -split -simple -winwidth=45 -no-quit<ENTER>
 " 検索ハイライトをesc2回で消す
 nnoremap <ESC><ESC> :nohlsearch<CR>
 vnoremap <silent> > >gv
