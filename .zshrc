@@ -1,5 +1,5 @@
 export PATH=/usr/local/bin:$PATH
-source ./right_prompt.zsh
+source ~/right_prompt.zsh
 
 # 日本語を使用
 export LANG=ja_JP.UTF-8

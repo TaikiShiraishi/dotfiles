@@ -21,11 +21,9 @@ let NERDTreeShowHidden = 1
 " NERDTreeで行番号を表示する
 let NERDTreeShowLineNumbers=1
 " NERDTreeの横幅
-let g:NERDTreeWinSize=60
+let g:NERDTreeWinSize=32
 " NERDTreeの無視リスト
 let g:NERDTreeIgnore=['\.DS_Store$', '\.git$', '\.svn$', '\.clean$', '\.swp$', '\.bak$', '\.hg$', '\.hgcheck$', '\~$']
-" NERDTreeの横幅指定
-let NERDTreeWinSize=26
 let g:vimfiler_as_default_explorer = 1 "vim標準のファイラを置き換える
 "他のバッファをすべて閉じた時にNERDTreeが開いていたらNERDTreeも一緒に閉じる。
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
