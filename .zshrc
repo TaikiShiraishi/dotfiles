@@ -1,3 +1,8 @@
+# nodebrew path
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+# export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
 export PATH=/usr/local/bin:$PATH
 source ~/right_prompt.zsh
 
