@@ -226,3 +226,4 @@ fi
 
 # プラグインを読み込み、コマンドにパスを通す
 # zplug load --verbose
+source ~/.tmuxinator/tmuxinator.zsh
