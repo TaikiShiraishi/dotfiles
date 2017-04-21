@@ -16,6 +16,8 @@ set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
 "行数の表示
 set number
 set cursorline " 行の強調
+set t_Co=256
+highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=235
 " NERDTreeで隠しファイルを表示するか
 let NERDTreeShowHidden = 1
 " NERDTreeで行番号を表示する
@@ -166,6 +168,14 @@ call plug#begin('~/.vim/plugged')
   Plug 'bling/vim-airline'
   " アイコン表示
   " Plug 'ryanoasis/vim-devicons'
+  " twitter
+  Plug 'basyura/TweetVim'
+  Plug 'mattn/webapi-vim'
+  Plug 'basyura/twibill.vim'
+  Plug 'tyru/open-browser.vim'
+  Plug 'h1mesuke/unite-outline'
+  Plug 'basyura/bitly.vim'
+  Plug 'Shougo/unite.vim'
   " ----------------------------------------
   "  lang syntax
   " ----------------------------------------
