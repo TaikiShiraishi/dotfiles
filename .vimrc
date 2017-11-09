@@ -176,6 +176,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'h1mesuke/unite-outline'
   Plug 'basyura/bitly.vim'
   Plug 'Shougo/unite.vim'
+  " Elm用
+  Plug 'elmcast/elm-vim'
   " ----------------------------------------
   "  lang syntax
   " ----------------------------------------
