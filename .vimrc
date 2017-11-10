@@ -1,5 +1,8 @@
 let g:hybrid_use_iTerm_colors = 1
-colorscheme molokai
+" colorscheme molokai
+" colorscheme materialbox
+" colorscheme material-theme
+colorscheme atom-dark-256
 set background=dark
 syntax on
 " 文字エンコーディング設定
@@ -169,7 +172,10 @@ call plug#begin('~/.vim/plugged')
   " アイコン表示
   " Plug 'ryanoasis/vim-devicons'
   " twitter
-  Plug 'basyura/TweetVim'
+  " Plug 'basyura/TweetVim'
+  " color scheme
+  Plug 'jdkanani/vim-material-theme', {'do': 'cp colors/* ~/.vim/colors/'}
+  Plug 'gosukiwi/vim-atom-dark', {'do': 'cp colors/* ~/.vim/colors/'}
   Plug 'mattn/webapi-vim'
   Plug 'basyura/twibill.vim'
   Plug 'tyru/open-browser.vim'

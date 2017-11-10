@@ -1,5 +1,5 @@
 set langmenu=ja_jp.utf-8
-set guifont=Ricty\ Diminished\ Discord:h12
+set guifont=Source\ Han\ Code\ JP:h20
 " set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
 " set guifont=DroidSansMonoPLNerd:h12
 colorscheme materialbox
