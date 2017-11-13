@@ -184,6 +184,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'Shougo/unite.vim'
   " Elm用
   Plug 'elmcast/elm-vim'
+  " git
+  Plug 'tpope/vim-fugitive'
   " ----------------------------------------
   "  lang syntax
   " ----------------------------------------
@@ -227,6 +229,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'Shougo/neosnippet-snippets'
 call plug#end()
 
+" 検索で自動的にquickfix-windowを開く
+autocmd QuickFixCmdPost *grep* cwindow
 
 " vim-indent-guides
 let g:indent_guides_auto_colors=0
