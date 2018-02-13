@@ -82,6 +82,8 @@ set autoindent
 set showmatch matchtime=1
 " statuslineの設定
 set statusline=2
+" ctags定義
+set tags+=.tags,.git/tags
 "ステータスラインに文字コードと改行文字を表示する
 " set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 " 全角スペースをハイライト表示
@@ -183,7 +185,13 @@ call plug#begin('~/.vim/plugged')
   Plug 'basyura/bitly.vim'
   Plug 'Shougo/unite.vim'
   " Elm用
-  Plug 'elmcast/elm-vim'
+  Plug 'elmcast/elm-vim', {'for': 'elm'}
+  " Elixir format elm-formatと競合するのでElixirを書くときのみOnに
+  Plug 'sbdchd/neoformat'
+  " Elixir対応
+  Plug 'elixir-editors/vim-elixir'
+  " Elixir補完
+  Plug 'kbrw/elixir.nvim', {'for': 'ex'}
   " git
   Plug 'tpope/vim-fugitive'
   " ----------------------------------------
