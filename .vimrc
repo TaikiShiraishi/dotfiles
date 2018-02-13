@@ -1,4 +1,3 @@
-let g:hybrid_use_iTerm_colors = 1
 " colorscheme molokai
 " colorscheme materialbox
 " colorscheme material-theme
