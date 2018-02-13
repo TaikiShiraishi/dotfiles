@@ -92,6 +92,21 @@ else
   alias diff='diff -u'
 fi
 
+# -----------------------
+# anyenv
+# -----------------------
+if [ -d ${HOME}/.anyenv ] ; then
+  export PATH="$HOME/.anyenv/bin:$PATH"
+  eval "$(anyenv init -)"
+  for D in `ls $HOME/.anyenv/share/anyenv-install`
+  do
+    export PATH="$HOME/.anyenv/share/anyenv-install/$D/shims:$PATH"
+  done
+fi
+
+# direnv setting
+eval "$(direnv hook zsh)"
+
 #
 # zplug -----------------------------------------------------------
 #
@@ -158,17 +173,6 @@ fi
 # zplug load --verbose
 source ~/.tmuxinator/tmuxinator.zsh
 
-# -----------------------
-# anyenv
-# -----------------------
-if [ -d ${HOME}/.anyenv ] ; then
-  export PATH="$HOME/.anyenv/bin:$PATH"
-  eval "$(anyenv init -)"
-  for D in `ls $HOME/.anyenv/share/anyenv-install`
-  do
-    export PATH="$HOME/.anyenv/share/anyenv-install/$D/shims:$PATH"
-  done
-fi
 
 #
 # 起動時にtmuxに -------------------------------------------------
