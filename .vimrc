@@ -379,6 +379,8 @@ nnoremap <silent><C-e> :NERDTreeToggle<CR>
 nnoremap <ESC><ESC> :nohlsearch<CR>
 vnoremap <silent> > >gv
 vnoremap <silent> < <gv
+" 空行挿入
+nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
 
 "----------------------------------------
 "  vim-trailing-whitespace
