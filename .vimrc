@@ -17,7 +17,8 @@ set list
 set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
 "行数の表示
 set number
-set cursorline " 行の強調
+" 行の強調
+set cursorline
 set t_Co=256
 highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=235
 " NERDTreeで隠しファイルを表示するか
@@ -150,8 +151,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/AnsiEsc.vim'
   " vimのテキストオブジェクトを拡張する
   Plug 'tpope/vim-surround'
-  " URLを開いたりググったりする
-  Plug 'tyru/open-browser.vim'
   " vimproc
   Plug 'Shougo/vimproc', {
   \ 'build': {
@@ -160,66 +159,23 @@ call plug#begin('~/.vim/plugged')
   \}
   " Markdown
   Plug 'plasticboy/vim-markdown'
-  " ブラウザを自動更新する
-  Plug 'tell-k/vim-browsereload-mac'
   Plug 'kannokanno/previm'
   Plug 'tyru/open-browser.vim'
   " 入力補完
   Plug 'Shougo/neocomplcache'
-  " vim養成ギプス
-  " Plug 'Shougo/neocomplete.vim', { 'on' : ['gips_reading_txt'] }
   " statusbarツール
   Plug 'bling/vim-airline'
-  " アイコン表示
-  " Plug 'ryanoasis/vim-devicons'
-  " twitter
-  " Plug 'basyura/TweetVim'
   " color scheme
   Plug 'jdkanani/vim-material-theme', {'do': 'cp colors/* ~/.vim/colors/'}
   Plug 'gosukiwi/vim-atom-dark', {'do': 'cp colors/* ~/.vim/colors/'}
-  Plug 'mattn/webapi-vim'
-  Plug 'basyura/twibill.vim'
-  Plug 'tyru/open-browser.vim'
-  Plug 'h1mesuke/unite-outline'
-  Plug 'basyura/bitly.vim'
-  Plug 'Shougo/unite.vim'
-  " Elm用
-  Plug 'elmcast/elm-vim', {'for': 'elm'}
-  " Elixir format elm-formatと競合するのでElixirを書くときのみOnに
-  Plug 'sbdchd/neoformat'
-  " Elixir対応
-  Plug 'elixir-editors/vim-elixir'
-  " Elixir補完
-  Plug 'kbrw/elixir.nvim', {'for': 'ex'}
   " git
   Plug 'tpope/vim-fugitive'
   " ----------------------------------------
   "  lang syntax
   " ----------------------------------------
-  " css3のシンタックス
-  Plug 'hail2u/vim-css3-syntax'
-  " html5のシンタックス
-  " Plug 'taichouchou2/html5.vim'
-  " javascriptのシンタックス
-  Plug 'jelera/vim-javascript-syntax'
-  " シンタックスチェッカー
-  Plug 'scrooloose/syntastic'
-  " pugシンタックス
-  Plug 'digitaltoad/vim-pug'
   " ---------------------------------------
   "  sinippets
   " ---------------------------------------
-  " vimでスニペットが使えるようになる
-  Plug 'Shougo/neosnippet'
-  Plug 'MarcWeber/vim-addon-mw-utils'
-  Plug 'tomtom/tlib_vim'
-  Plug 'garbas/vim-snipmate'
-  Plug 'shuvalov-anton/vim-snippets'
-  " javascriptの補完
-  Plug 'jiangmiao/simple-javascript-indenter'
-  Plug 'mattn/jscomplete-vim'
-  " jQueryのスニペット
-  Plug 'vim-scripts/jQuery'
   " ---------------------------------------
   " text edit
   " ---------------------------------------
@@ -229,11 +185,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-surround'
   " 行末の空白を削除
   Plug 'bronson/vim-trailing-whitespace'
-  " ---------------------------------------
-  " text edit
-  " ---------------------------------------
-  " 独自スニペットを実装
-  Plug 'Shougo/neosnippet-snippets'
 call plug#end()
 
 " 検索で自動的にquickfix-windowを開く
