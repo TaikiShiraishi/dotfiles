@@ -8,8 +8,10 @@
   showpr = !"f() { git log --merges --oneline --reverse --ancestry-path $1...develop | grep 'Merge pull request #' | head -n 1; }; f"
 
 [core]
-  excludesfile = $HOME/.gitignore_global
+  excludesfile = ~/.gitignore_global
   editor = vim -c \"set fenc=utf-8\"
+	precomposeUnicode = true
+	autocrlf = input
 
 [diff]
   tool = vimdiff
