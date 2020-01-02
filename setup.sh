@@ -23,6 +23,19 @@ fi
 # Install zsh
 #
 if ! command_exists zsh ; then
+  echo "---------- zsh ----------"
+  brew install zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting colordiff
+  which -a zsh
+  echo $pass | sudo -S -- sh -c 'echo '/usr/local/bin/zsh' >> /etc/shells'
+  chsh -s /usr/local/bin/zsh
+  echo "---------- END ----------"
+fi
+
+
+#
+# Vim
+#
+if ! command_exists vim ; then
   echo "---------- Vim ----------"
   brew install vim --with-override-system-vi
   echo "---------- END ----------"
@@ -37,6 +50,15 @@ cp RictyDiminished-for-Powerline/Ricty*.ttf ~/Library/Fonts/
 cp RictyDiminished-for-Powerline/vim-powerline-fontpatched/Ricty*.ttf ~/Library/Fonts/
 fc-cache -f
 echo "---------- END -----------"
+
+#
+# Install Yarn
+#
+if ! command_exists yarn ; then
+  echo "---------- Yarn ----------"
+  brew install yarn
+  echo "----------- END ------------"
+fi
 
 #
 # Install anyenv
