@@ -29,3 +29,21 @@ defaults write -g AppleShowScrollBars -string "Always"
 
 # カーソルの移動速度を変更 （1〜15）
 defaults write -g com.apple.trackpad.scaling -float 15
+
+# Dockの位置を右に
+defaults write -g com.apple.dock orientation right
+
+# バッテリーの残量のパーセンテージ表示
+defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+
+killall Dock
+killall SystemUIServer
+killall Finder
+
+ln -s dotfiles/.gitconfig ~/.gitconfig
+ln -s dotfiles/.gitignore_global ~/.gitconfig
+ln -s dotfiles/.zshrc ~/.zshrc
+ln -s dotfiles/.zprofile ~/.profile
+ln -s dotfiles/right_prompt.zsh ~/right_prompt.zsh
+ln -s dotfiles/.tmux.conf ~/.tmux.conf
+ln -s dotfiles/.vimrc ~/.vimrc
