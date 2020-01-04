@@ -99,7 +99,7 @@ if ! command_exists jq ; then
 fi
 
 #
-# Install trew
+# Install tree
 #
 if ! command_exists tree ; then
   echo "---------- tree ----------"
