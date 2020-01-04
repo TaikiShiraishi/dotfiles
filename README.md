@@ -1,4 +1,4 @@
 # Get started
 ```
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/AkkeyLab/mac-auto-setup/master/download.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/TaikiShiraishi/dotfiles/master/download.sh)"
 ```
