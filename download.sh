@@ -10,7 +10,8 @@ if ! command_exists brew ; then
   echo "---------- Homebrew ---------"
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   brew update
-  brew upgrade --all --cleanup
+  brew upgrade
+  brew cleanup
   brew -v
   echo "---------- END ----------"
 fi
