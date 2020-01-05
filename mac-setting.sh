@@ -40,13 +40,13 @@ killall Dock
 killall SystemUIServer
 killall Finder
 
-ln -s dotfiles/.gitconfig ~/.gitconfig
-ln -s dotfiles/.gitignore_global ~/.gitconfig
-ln -s dotfiles/.zshrc ~/.zshrc
-ln -s dotfiles/.zprofile ~/.profile
-ln -s dotfiles/right_prompt.zsh ~/right_prompt.zsh
-ln -s dotfiles/.tmux.conf ~/.tmux.conf
-ln -s dotfiles/.vimrc ~/.vimrc
+ln -s dotfiles/.gitconfig ~/
+ln -s dotfiles/.gitignore_global ~/
+ln -s dotfiles/.zshrc ~/
+ln -s dotfiles/.zprofile ~/
+ln -s dotfiles/right_prompt.zsh ~/
+ln -s dotfiles/.tmux.conf ~/
+ln -s dotfiles/.vimrc ~/
 exec $SHELL -l
 
 echo "---------- anyenv ----------"
