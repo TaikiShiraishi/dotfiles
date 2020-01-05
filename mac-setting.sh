@@ -40,13 +40,17 @@ killall Dock
 killall SystemUIServer
 killall Finder
 
-ln -s dotfiles/.gitconfig ~/
-ln -s dotfiles/.gitignore_global ~/
-ln -s dotfiles/.zshrc ~/
-ln -s dotfiles/.zprofile ~/
-ln -s dotfiles/right_prompt.zsh ~/
-ln -s dotfiles/.tmux.conf ~/
-ln -s dotfiles/.vimrc ~/
+echo "---------- zplug ----------"
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+echo "---------- END ----------"
+
+ln -s dotfiles/.gitconfig ~
+ln -s dotfiles/.gitignore_global ~
+ln -s dotfiles/.zshrc ~
+ln -s dotfiles/.zprofile ~
+ln -s dotfiles/right_prompt.zsh ~
+ln -s dotfiles/.tmux.conf ~
+ln -s dotfiles/.vimrc ~
 exec $SHELL -l
 
 echo "---------- anyenv ----------"
