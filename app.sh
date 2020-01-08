@@ -2,6 +2,7 @@
 #
 # Install web apps
 #
+brew cask install adguard
 brew cask install adobe-creative-cloud
 brew cask install alfred
 brew cask install appcleaner
@@ -15,6 +16,7 @@ brew cask install firefox
 brew cask install google-chrome
 brew cask install google-drive-file-stream
 brew cask install karabiner-elements
+brew cask install macvim
 brew cask install microsoft-office
 brew cask install notion
 brew cask install pomotodo
