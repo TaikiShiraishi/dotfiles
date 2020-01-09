@@ -107,6 +107,7 @@ if has('persistent_undo')
 endif
 
 " ノーマルモード切り替え時にIMEをOFFに
+" @see https://rcmdnk.com/blog/2017/03/10/computer-mac-vim/
 if has('mac')
   set ttimeoutlen=1
   let g:imeoff = 'osascript -e "tell application \"System Events\" to key code 102"'
