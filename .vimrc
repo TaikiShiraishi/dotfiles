@@ -82,6 +82,8 @@ set showmatch matchtime=1
 set statusline=2
 " ctags定義
 set tags+=.tags,.git/tags
+" コマンドモードを抜ける時にIMEをOFFにする Kaoriya限定
+set imdisable
 "ステータスラインに文字コードと改行文字を表示する
 " set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 " 全角スペースをハイライト表示
@@ -102,6 +104,17 @@ endif
 if has('persistent_undo')
    set undodir=~/.vim/undo
    set undofile
+endif
+
+" ノーマルモード切り替え時にIMEをOFFに
+if has('mac')
+  set ttimeoutlen=1
+  let g:imeoff = 'osascript -e "tell application \"System Events\" to key code 102"'
+  augroup MyIMEGroup
+    autocmd!
+    autocmd InsertLeave * :call system(g:imeoff)
+  augroup END
+  noremap <silent> <ESC> <ESC>:call system(g:imeoff)<CR>
 endif
 
 " カーソルを自動的に()の中へ
