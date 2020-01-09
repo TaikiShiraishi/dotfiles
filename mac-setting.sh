@@ -88,28 +88,3 @@ defaults write com.apple.dashboard mcx-disabled -boolean true
 killall Dock
 killall SystemUIServer
 killall Finder
-
-echo "---------- zplug ----------"
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-exec $SHELL -l
-echo "---------- END ----------"
-
-ln -s dotfiles/.gitconfig ~
-ln -s dotfiles/.gitignore_global ~
-ln -s dotfiles/.zshrc ~
-ln -s dotfiles/.zprofile ~
-ln -s dotfiles/right_prompt.zsh ~
-ln -s dotfiles/.tmux.conf ~
-ln -s dotfiles/.vimrc ~
-exec $SHELL -l
-
-echo "---------- anyenv ----------"
-anyenv --version
-anyenv init
-anyenv install rbenv
-rbenv --version
-anyenv install nodenv
-nodenv --version
-rbenv install $(rbenv install -l | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}')
-nodenv install $(nodenv install -l | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}')
-echo "---------- END ----------"
