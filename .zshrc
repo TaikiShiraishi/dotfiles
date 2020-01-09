@@ -1,4 +1,5 @@
 export PATH=/usr/local/bin:$PATH
+source ~/left_prompt.zsh
 source ~/right_prompt.zsh
 
 # 日本語を使用
@@ -206,11 +207,11 @@ function tmux_automatically_attach_session()
         ! is_exists 'tmux' && return 1
 
         if is_tmux_runnning; then
-            echo "${fg_bold[red]} _____ __  __ _   ___  __ ${reset_color}"
-            echo "${fg_bold[red]}|_   _|  \/  | | | \ \/ / ${reset_color}"
-            echo "${fg_bold[red]}  | | | |\/| | | | |\  /  ${reset_color}"
-            echo "${fg_bold[red]}  | | | |  | | |_| |/  \  ${reset_color}"
-            echo "${fg_bold[red]}  |_| |_|  |_|\___//_/\_\ ${reset_color}"
+            echo "${fg_bold[blue]} _____ __  __ _   ___  __ ${reset_color}"
+            echo "${fg_bold[blue]}|_   _|  \/  | | | \ \/ / ${reset_color}"
+            echo "${fg_bold[blue]}  | | | |\/| | | | |\  /  ${reset_color}"
+            echo "${fg_bold[blue]}  | | | |  | | |_| |/  \  ${reset_color}"
+            echo "${fg_bold[blue]}  |_| |_|  |_|\___//_/\_\ ${reset_color}"
         elif is_screen_running; then
             echo "This is on screen."
         fi

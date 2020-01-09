@@ -1,9 +1,4 @@
 # ----- PROMPT -----
-## PROMPT
-PROMPT=$'[%~]
-\uE0B0 '
-## RPROMPT
-
 # RPROMPT=$'`branch-status-check` %~' # %~はpwd
 RPROMPT=$'`branch-status-check`'
 setopt prompt_subst #表示毎にPROMPTで設定されている文字列を評価する

@@ -1,8 +1,6 @@
-" colorscheme molokai
-" colorscheme materialbox
-" colorscheme material-theme
-colorscheme atom-dark-256
-set background=dark
+" カラーテーマ
+colorscheme one
+set background=light
 syntax on
 " 文字エンコーディング設定
 set encoding=utf-8
@@ -19,8 +17,8 @@ set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
 set number
 " 行の強調
 set cursorline
-set t_Co=256
-highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=235
+"set t_Co=256
+" highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=235
 " NERDTreeで隠しファイルを表示するか
 let NERDTreeShowHidden = 1
 " NERDTreeで行番号を表示する
@@ -166,8 +164,7 @@ call plug#begin('~/.vim/plugged')
   " statusbarツール
   Plug 'bling/vim-airline'
   " color scheme
-  Plug 'jdkanani/vim-material-theme', {'do': 'cp colors/* ~/.vim/colors/'}
-  Plug 'gosukiwi/vim-atom-dark', {'do': 'cp colors/* ~/.vim/colors/'}
+  Plug 'rakr/vim-one', {'do': 'cp colors/* ~/.vim/colors/'}
   " git
   Plug 'tpope/vim-fugitive'
   " vim養成ギプス
@@ -213,6 +210,10 @@ call plug#end()
 " ---------------------------------------
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+
+" vim-oneのサポート設定
+set t_8b=^[[48;2;%lu;%lu;%lum
+set t_8f=^[[38;2;%lu;%lu;%lum
 
 " ---------------------------------------
 " Intellisense Setting
@@ -460,6 +461,7 @@ nmap ga <Plug>(EasyAlign)
 
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1 "tabline表示
+let g:airline_theme='one'
 
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplcache#undo_completion()
