@@ -1,5 +1,6 @@
 #!/bin/bash
 echo "---------- anyenv ----------"
+git clone https://github.com/znz/anyenv-update.git "$(anyenv root)/plugins/anyenv-update"
 anyenv --version
 anyenv init
 anyenv install rbenv
