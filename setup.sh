@@ -40,9 +40,9 @@ echo "---------- END ----------"
 
 #
 # Symbolic link dotfiles
+#
 DOT_FILES=(.gitconfig .gitignore_global .zshrc .zprofile .vimrc .tmux.conf left_prompt.zsh right_prompt.zsh)
-for file in ${DOT_FILES[@]}
-do
+for file in ${DOT_FILES[@]} do
     ln -s $HOME/dotfiles/$file $HOME/
 done
 
@@ -67,4 +67,11 @@ echo "---------- END ----------"
 #
 echo "---------- brew ----------"
 brew bundle
+echo "---------- END ----------"
+
+#
+# Install Tmux Plugin Manager
+#
+echo "---------- tpm ----------"
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo "---------- END ----------"
