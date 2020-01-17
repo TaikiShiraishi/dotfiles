@@ -174,7 +174,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'kannokanno/previm'
   Plug 'tyru/open-browser.vim'
   " 入力補完
-  Plug 'Shougo/neocomplcache'
+  " Plug 'Shougo/neocomplcache'
   " statusbarツール
   Plug 'bling/vim-airline'
   " color scheme
@@ -203,9 +203,21 @@ call plug#begin('~/.vim/plugged')
       \ 'php',
       \ 'html'] }
   " ----------------------------------------
+  "  languages
+  " ----------------------------------------
+  "  JavaScript
+  Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
+  " ----------------------------------------
   "  lang syntax
   " ----------------------------------------
+  " PlantUmlのハイライト
   Plug 'aklt/plantuml-syntax'
+  " モダンなJSのハイライト
+  Plug 'othree/yajs.vim', { 'for': ['javascript', 'javascript.jsx'] }
+  Plug 'othree/es.next.syntax.vim', { 'for': ['javascript', 'javascript.jsx'] }
+  Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'javascript.jsx'] }
+  " テンプレートリテラルのハイライト
+  Plug 'Quramy/vim-js-pretty-template'
   " ---------------------------------------
   "  sinippets
   " ---------------------------------------
@@ -228,6 +240,9 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 " vim-oneのサポート設定
 set t_8b=^[[48;2;%lu;%lu;%lum
 set t_8f=^[[38;2;%lu;%lu;%lum
+
+" yajs Setting
+autocmd BufRead,BufNewFile *.es6 setfiletype javascript
 
 " ---------------------------------------
 " Intellisense Setting
@@ -456,16 +471,16 @@ let g:previm_open_cmd = 'open'
 "" Disable AutoComplPop.
 " let g:acp_enableAtStartup = 0
 " Use neocomplcache.
-let g:neocomplete#enable_at_startup = 1
+" let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : ''
-    \ }
-
+" let g:neocomplete#enable_smart_case = 1
+" let g:neocomplete#sources#syntax#min_keyword_length = 3
+" let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+"
+" let g:neocomplete#sources#dictionary#dictionaries = {
+"     \ 'default' : ''
+"     \ }
+"
 
 "-----------------------------
 " easy align
@@ -478,22 +493,22 @@ let g:airline#extensions#tabline#enabled = 1 "tabline表示
 let g:airline_theme='one'
 
 " Plugin key-mappings.
-inoremap <expr><C-g>     neocomplcache#undo_completion()
-inoremap <expr><C-l>     neocomplcache#complete_common_string()
+" inoremap <expr><C-g>     neocomplcache#undo_completion()
+" inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplcache#smart_close_popup() . "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
+" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+" function! s:my_cr_function()
+"   return neocomplcache#smart_close_popup() . "\<CR>"
+" endfunction
+" " <TAB>: completion.
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" " <C-h>, <BS>: close popup and delete backword char.
+" inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+" inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+" inoremap <expr><C-y>  neocomplcache#close_popup()
+" inoremap <expr><C-e>  neocomplcache#cancel_popup()
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 " 検索ハイライトをesc2回で消す
 nnoremap <ESC><ESC> :nohlsearch<CR>
