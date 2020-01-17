@@ -242,7 +242,11 @@ set t_8b=^[[48;2;%lu;%lu;%lum
 set t_8f=^[[38;2;%lu;%lu;%lum
 
 " yajs Setting
-autocmd BufRead,BufNewFile *.es6 setfiletype javascript
+augroup YAJS
+  autocmd BufRead,BufNewFile *.es6 set filetype=javascript
+  autocmd BufRead,BufNewFile *.js set filetype=javascript
+  autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+augroup END
 
 " ---------------------------------------
 " Intellisense Setting
