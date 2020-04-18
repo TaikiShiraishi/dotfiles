@@ -40,6 +40,8 @@ set showcmd
 let g:vim_markdown_folding_disabled=1
 " 対応する括弧を強調
 set showmatch
+" %ジャンプの拡張
+source $VIMRUNTIME/macros/matchit.vim
 " ヘルプを画面いっぱいに開く
 set helpheight=999
 " 不可視文字を表示
@@ -81,7 +83,7 @@ set showmatch matchtime=1
 " statuslineの設定
 set statusline=2
 " ctags定義
-set tags+=.tags,.git/tags
+" set tags+=.tags,.git/tags
 " コマンドモードを抜ける時にIMEをOFFにする Kaoriya限定
 set imdisable
 "ステータスラインに文字コードと改行文字を表示する
@@ -119,13 +121,13 @@ if has('mac')
 endif
 
 " カーソルを自動的に()の中へ
-imap {} {}<Left>
-imap [] []<Left>
-imap () ()<Left>
-imap "" ""<Left>
-imap '' ''<Left>
-imap <> <><Left>
-imap ** **<left>
+" imap {} {}<Left>
+" imap [] []<Left>
+" imap () ()<Left>
+" imap "" ""<Left>
+" imap '' ''<Left>
+" imap <> <><Left>
+" imap ** **<left>
 
 " 最後の編集位置でファイルを開く
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -202,11 +204,15 @@ call plug#begin('~/.vim/plugged')
       \ 'angular',
       \ 'php',
       \ 'html'] }
+  " 括弧の補完
+  Plug 'cohama/lexima.vim'
   " ----------------------------------------
   "  languages
   " ----------------------------------------
   "  JavaScript
   Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
+  " Jinja(Nunjucks)
+  Plug 'lepture/vim-jinja', { 'for': ['jinja'] }
   " ----------------------------------------
   "  lang syntax
   " ----------------------------------------
@@ -247,6 +253,8 @@ augroup YAJS
   autocmd BufRead,BufNewFile *.js set filetype=javascript
   autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 augroup END
+
+autocmd BufRead,BufNewFile *.html set filetype=jinja
 
 " ---------------------------------------
 " Intellisense Setting
@@ -387,9 +395,8 @@ let g:indent_guides_guide_size=1
 
 " emmet setting
 
-let g:user_emmet_mode = 'iv'
-let g:user_emmet_leader_key = '<c-t>'
-let g:use_emmet_complete_tag = 1
+let g:user_emmet_leader_key='<Tab>'
+" let g:use_emmet_complete_tag = 1
 let g:user_emmet_settings = {
     \ 'variables':{
     \    'lang' : 'ja',
@@ -405,57 +412,59 @@ let g:user_emmet_settings = {
     \   'filters' : 'html',
     \ },
     \}
-augroup EmmitVim
-  autocmd!
-  autocmd FileType * let g:user_emmet_settings.indentation = '    '[:&tabstop]
-augroup END
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,jinja EmmetInstall
+" augroup EmmitVim
+"   autocmd!
+"   autocmd FileType * let g:user_emmet_settings.indentation = '    '[:&tabstop]
+" augroup END
 
 " リロード後に戻ってくるアプリ 変更してください
 let g:returnApp = "Terminal"
 nmap <Space>bc :ChromeReloadStart<CR>
 nmap <Space>bC :ChromeReloadStop<CR>
 nmap <Space>bf :FirefoxReloadStart<CR>
-nmap <Space>bF :FirefoxReloadStop<CR>
-nmap <Space>bs :SafariReloadStart<CR>
-nmap <Space>bS :SafariReloadStop<CR>
-nmap <Space>bo :OperaReloadStart<CR>
-nmap <Space>bO :OperaReloadStop<CR>
-nmap <Space>ba :AllBrowserReloadStart<CR>
-nmap <Space>bA :AllBrowserReloadStop<CR>
+  nmap <Space>bF :FirefoxReloadStop<CR>
+  nmap <Space>bs :SafariReloadStart<CR>
+  nmap <Space>bS :SafariReloadStop<CR>
+  nmap <Space>bo :OperaReloadStart<CR>
+  nmap <Space>bO :OperaReloadStop<CR>
+  nmap <Space>ba :AllBrowserReloadStart<CR>
+  nmap <Space>bA :AllBrowserReloadStop<CR>
 
-" Anywhere SID.
-function! s:SID_PREFIX()
-  return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
-endfunction
+  " Anywhere SID.
+  function! s:SID_PREFIX()
+    return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
+  endfunction
 
-" Set tabline.
-function! s:my_tabline()  "{{{
-  let s = ''
-  for i in range(1, tabpagenr('$'))
-    let bufnrs = tabpagebuflist(i)
-    let bufnr = bufnrs[tabpagewinnr(i) - 1]  " first window, first appears
-    let no = i  " display 0-origin tabpagenr.
-    let mod = getbufvar(bufnr, '&modified') ? '!' : ' '
-    let title = fnamemodify(bufname(bufnr), ':t')
-    let title = '[' . title . ']'
-    let s .= '%'.i.'T'
-    let s .= '%#' . (i == tabpagenr() ? 'TabLineSel' : 'TabLine') . '#'
-    let s .= no . ':' . title
-    let s .= mod
-    let s .= '%#TabLineFill# '
-  endfor
-  let s .= '%#TabLineFill#%T%=%#TabLine#'
-  return s
-endfunction "}}}
-let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
-set showtabline=2 " 常にタブラインを表示
+  " Set tabline.
+  function! s:my_tabline()  "{{{
+    let s = ''
+    for i in range(1, tabpagenr('$'))
+      let bufnrs = tabpagebuflist(i)
+      let bufnr = bufnrs[tabpagewinnr(i) - 1]  " first window, first appears
+      let no = i  " display 0-origin tabpagenr.
+      let mod = getbufvar(bufnr, '&modified') ? '!' : ' '
+      let title = fnamemodify(bufname(bufnr), ':t')
+      let title = '[' . title . ']'
+      let s .= '%'.i.'T'
+      let s .= '%#' . (i == tabpagenr() ? 'TabLineSel' : 'TabLine') . '#'
+      let s .= no . ':' . title
+      let s .= mod
+      let s .= '%#TabLineFill# '
+    endfor
+    let s .= '%#TabLineFill#%T%=%#TabLine#'
+    return s
+  endfunction "}}}
+  let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
+  set showtabline=2 " 常にタブラインを表示
 
-" The prefix key.
-nnoremap    [Tag]   <Nop>
-nmap    t [Tag]
-" Tab jump
-for n in range(1, 9)
-  execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
+  " The prefix key.
+  nnoremap    [Tag]   <Nop>
+  nmap    t [Tag]
+  " Tab jump
+  for n in range(1, 9)
+    execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
 endfor
 " t1 で1番左のタブ、t2 で1番左から2番目のタブにジャンプ
 map <silent> [Tag]c :tablast <bar> tabnew<CR>

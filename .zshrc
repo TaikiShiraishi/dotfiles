@@ -99,6 +99,8 @@ fi
 if [ -d ${HOME}/.anyenv ] ; then
   export PATH="$HOME/.anyenv/bin:$PATH"
   eval "$(anyenv init -)"
+  # anyenvでpythonをインストールしているとbrew管理と衝突するかも知れないと警告が出るのでパスを通す
+  # alias brew="env PATH=${PATH/\$(anyenv root)\/envs\/*env\shims:?/} brew"
 fi
 
 # direnv setting
@@ -189,6 +191,9 @@ zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
 #phprc
 export PATH="$HOME/wpcs/vendor/bin:$PATH"
 
+#ctags
+alias ctags="`brew --prefix`/bin/ctags"
+
 
 #
 # 起動時にtmuxに -------------------------------------------------
@@ -254,3 +259,8 @@ function tmux_automatically_attach_session()
     fi
 }
 tmux_automatically_attach_session
+# export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+# export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+# export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+# export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
+# export CONFIGURE_OPTS="--with-openssl=$(/usr/local/opt/openssl@1.1/lib/pkgconfig)"

@@ -82,6 +82,7 @@ cask "webstorm"
 mas "Bitwarden", id: 1352778147
 mas "CotEditor", id: 1024640650
 mas "Keynote", id: 409183694
+mas "MenuBar Stats", id: 714196447
 mas "Slack", id: 803453959
 mas "The Unarchiver", id: 425424353
 mas "Xcode", id: 497799835
