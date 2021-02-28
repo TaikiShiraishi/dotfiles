@@ -32,19 +32,18 @@ if ! command_exists git ; then
 fi
 
 #
-# Clone my dotfiles
-#
-echo "--------- dotfiles.git ----------"
-git  clone https://github.com/TaikiShiraishi/dotfiles.git
-echo "---------- END ----------"
-
-#
 # Symbolic link dotfiles
 #
-DOT_FILES=(.gitconfig .gitignore_global .zshrc .zprofile .vimrc .tmux.conf left_prompt.zsh right_prompt.zsh)
-for file in ${DOT_FILES[@]} do
-    ln -s $HOME/dotfiles/$file $HOME/
+DOTPATH=~/dotfiles
+for f in .??*
+do
+  [ "$f" = ".git" ] && continue
+  ln -snfv "$DOTPATH/$f" "$HOME"/"$f"
 done
+# DOT_FILES=(.gitconfig .gitignore_global .zshrc .zprofile .vimrc .tmux.conf left_prompt.zsh right_prompt.zsh)
+# for file in ${DOT_FILES[@]} do
+#   ln -s $HOME/dotfiles/$file $HOME/
+# done
 
 #
 # Install zsh
