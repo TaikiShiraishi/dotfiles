@@ -194,6 +194,9 @@ export PATH="$HOME/wpcs/vendor/bin:$PATH"
 #ctags
 alias ctags="`brew --prefix`/bin/ctags"
 
+# IMEをkill
+alias jfix='kill `ps x | grep JapaneseIM.appex | grep System | awk '\''{ print $1 }'\''`'
+
 
 #
 # 起動時にtmuxに -------------------------------------------------
