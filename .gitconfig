@@ -37,3 +37,5 @@
 	required = true
 [pull]
 	rebase = false
+[http]
+	version = HTTP/1.1
