@@ -254,7 +254,7 @@ augroup YAJS
   autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 augroup END
 
-autocmd BufRead,BufNewFile *.html set filetype=jinja
+" autocmd BufRead,BufNewFile *.html set filetype=jinja
 
 " ---------------------------------------
 " Intellisense Setting
