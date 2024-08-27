@@ -29,7 +29,7 @@
 	trustExitCode = true
 [user]
 	name = Taiki Shiraishi
-	email = operatic-earthquake+github@pm.me
+	email = 16092754+TaikiShiraishi@users.noreply.github.com
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
