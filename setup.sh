@@ -13,7 +13,8 @@ read -sp "Your Password:" pass;
 #
 if ! command_exists brew ; then
   echo "---------- Homebrew ---------"
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  xcode-select --install
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   brew update
   brew upgrade
   brew cleanup
@@ -32,20 +33,6 @@ if ! command_exists git ; then
 fi
 
 #
-# Symbolic link dotfiles
-#
-DOTPATH=~/dotfiles
-for f in .??*
-do
-  [ "$f" = ".git" ] && continue
-  ln -snfv "$DOTPATH/$f" "$HOME"/"$f"
-done
-# DOT_FILES=(.gitconfig .gitignore_global .zshrc .zprofile .vimrc .tmux.conf left_prompt.zsh right_prompt.zsh)
-# for file in ${DOT_FILES[@]} do
-#   ln -s $HOME/dotfiles/$file $HOME/
-# done
-
-#
 # Install zsh
 #
 if command_exists zsh ; then
@@ -55,6 +42,14 @@ if command_exists zsh ; then
   chsh -s /usr/local/bin/zsh
   echo "---------- END ----------"
 fi
+
+#
+# Install zprezto
+#
+echo "---------- zprezto ----------"
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+echo "---------- END ----------"
+
 
 echo "---------- zplug ----------"
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
@@ -68,9 +63,3 @@ echo "---------- brew ----------"
 brew bundle
 echo "---------- END ----------"
 
-#
-# Install Tmux Plugin Manager
-#
-echo "---------- tpm ----------"
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-echo "---------- END ----------"

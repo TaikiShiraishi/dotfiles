@@ -19,7 +19,7 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -int 
 defaults write -g com.apple.trackpad.scaling -float 10
 
 # Finder:隠しファイル/フォルダを表示
-defaults write com.apple.finder AppleShowAllFiles true
+defaults write com.apple.finder AppleShowAllFiles -boolean true
 
 # Finder:拡張子を表示
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
