@@ -235,6 +235,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-surround'
   " 行末の空白を削除
   Plug 'bronson/vim-trailing-whitespace'
+  "
+  " fuzzy search
+  "
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
 call plug#end()
 " ---------------------------------------
 " Prettier auto save setting
