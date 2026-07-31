@@ -1,11 +1,6 @@
-*~
 .DS_Store
-<<<<<<< Updated upstream
 .idea/
 .vscode
-=======
-.idea/*
->>>>>>> Stashed changes
 .tags
 _temp_doc/
 
