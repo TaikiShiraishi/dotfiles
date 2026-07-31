@@ -1,6 +1,5 @@
 " カラーテーマ
-colorscheme material
-let g:marial_theme_style = 'ocean'
+"colorscheme dracula
 set background=dark
 syntax on
 " 文字エンコーディング設定
@@ -10,7 +9,10 @@ set fileformats=unix,dos,mac
 "backspaceを有効化
 set backspace=indent,eol,start
 " vimのコピペをクリップボードと連携
-set clipboard=unnamed
+set clipboard=unnamedplus
+if exists('g:vscode')
+  set clipboard=unnamedplus
+endif
 "タブ、空白、改行の可視化
 set list
 set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
@@ -42,7 +44,7 @@ let g:vim_markdown_folding_disabled=1
 " 対応する括弧を強調
 set showmatch
 " %ジャンプの拡張
-source $VIMRUNTIME/macros/matchit.vim
+" source $VIMRUNTIME/macros/matchit.vim
 " ヘルプを画面いっぱいに開く
 set helpheight=999
 " 不可視文字を表示
@@ -86,7 +88,7 @@ set statusline=2
 " ctags定義
 " set tags+=.tags,.git/tags
 " コマンドモードを抜ける時にIMEをOFFにする Kaoriya限定
-set imdisable
+" set imdisable
 "ステータスラインに文字コードと改行文字を表示する
 " set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 " 全角スペースをハイライト表示
@@ -180,8 +182,10 @@ call plug#begin('~/.vim/plugged')
   " Plug 'Shougo/neocomplcache'
   " statusbarツール
   Plug 'bling/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  " Using Vim-Plug:
   " color scheme
-  Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+  Plug 'Mofiqul/dracula.nvim'
   " git
   Plug 'tpope/vim-fugitive'
   " vim養成ギプス
@@ -373,7 +377,7 @@ nmap ga <Plug>(EasyAlign)
 
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1 "tabline表示
-let g:airline_theme='material'
+let g:airline_theme='deus'
 
 " Plugin key-mappings.
 " inoremap <expr><C-g>     neocomplcache#undo_completion()
