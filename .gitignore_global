@@ -1,5 +1,8 @@
-*~
 .DS_Store
 .idea/
 .vscode
 .tags
+_temp_doc/
+
+
+**/.claude/settings.local.json
